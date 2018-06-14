@@ -1,0 +1,22 @@
+---
+- hosts: peers
+  remote_user: root
+
+  tasks: 
+
+    - name: Install repository KEY
+      apt_key:
+        id: C6B2AC7FBEB649F1
+        keyserver: pgp.mit.edu
+
+    - name: Update and upgrade
+      apt: 
+        update_cache: yes
+        upgrade: yes
+
+    - name: Autoclean
+      apt: 
+        update_cache: yes
+        autoclean: yes
+
+- include: subutai.yml

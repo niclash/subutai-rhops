@@ -1,0 +1,72 @@
+---
+- hosts: [peers]
+  remote_user: root
+
+  tasks:
+    - name: Add Subutai key
+      apt_key:
+        keyserver: keyserver.ubuntu.com
+        id: C6B2AC7FBEB649F1
+
+    - name: Add Subutai Repository
+      apt_repository:
+        repo: deb http://deb.subutai.io/subutai prod main
+
+    - name: Add zfs to /etc/modules
+      lineinfile:
+        path: /etc/modules
+        regexp: "^zfs$"
+        state: present
+        insertafter: EOF
+        line: "zfs"
+
+    - name: Install zfs-dkms
+      apt:
+        name: zfs-dkms
+        state: present
+
+    - name: Load zfs
+      modprobe:
+        name: zfs
+        state: present
+
+    - name: Create subutai zpool
+      command: zpool create -O compression=lz4 subutai {{ subutai_zfs_device }}
+      args:
+        creates: /subutai
+
+    - name: Create lxc zfs
+      zfs:
+        name: subutai/fs
+        state: present
+        extra_zfs_properties:
+          mountpoint: /var/lib/lxc
+  
+    - name: Install curl
+      apt:
+        name: curl
+        state: present
+  
+    - name: Install lxc
+      apt:
+        name: lxc
+        state: present
+
+    - name: Install Subutai
+      apt:
+        name: subutai
+        state: present
+
+    - name: Install Subutai management
+      command: subutai import management
+      creates: /var/lib/lxc/management
+      register: management
+
+    - name: Set Management Password
+      command: /bin/bash -c 'while ! wget --no-check-certificate --quiet -O- https://localhost:8443/rest/v1/peer/ready >/dev/null; do sleep 2; done ; sleep 1 ; curl --insecure --silent -X POST -d "username=admin&password=secret&newpassword={{ management_password }}" https://localhost:8443/login'
+      when: management.changed
+
+    - name: Register with hub
+      command: /bin/bash -c 'sleep 10 ; TOKEN=`curl --insecure --silent -X POST -d "username=admin&password={{ management_password }}" https://localhost:8443/rest/v1/identity/gettoken` ; sleep 1 ;  curl --insecure --silent -X POST -d "email={{ bazaar_username }}&password={{ bazaar_password }}&peerName={{ inventory_hostname }}&peerScope={{ bazaar_scope | default("public") }}" https://localhost:8443/rest/v1/hub/register?sptoken=$TOKEN'
+      when: management.changed
+
