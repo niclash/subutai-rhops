@@ -22,7 +22,7 @@ ssh-keyscan -H $FULLHOST >> ~/.ssh/known_hosts
 ssh root@$FULLHOST "/root/.oldroot/nfs/install/installimage \
               -a  \
               -b grub \
-              -r yes \
+              -r no \
               -l 0 \
               -d sda \
               -n $HOST \

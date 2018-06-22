@@ -1,9 +1,8 @@
 [peers]
-s1.sensetif.net subutai_zfs_device=/dev/sdb management_password=L7mxfLMWjECtAU= bazaar_username=niclas@hedhman.org bazaar_password=RottenEgg!
-s2.sensetif.net subutai_zfs_device=/dev/sdb management_password=L7mxfLMWjECtAU= bazaar_username=niclas@hedhman.org bazaar_password=RottenEgg!
-s3.sensetif.net subutai_zfs_device=/dev/sdb management_password=L7mxfLMWjECtAU= bazaar_username=niclas@hedhman.org bazaar_password=RottenEgg!
-s4.sensetif.net subutai_zfs_device=/dev/sdb management_password=L7mxfLMWjECtAU= bazaar_username=niclas@hedhman.org bazaar_password=RottenEgg!
-s5.sensetif.net subutai_zfs_device=/dev/sdb management_password=L7mxfLMWjECtAU= bazaar_username=niclas@hedhman.org bazaar_password=RottenEgg!
+s1.bali.io subutai_zfs_device=/dev/sdb management_password=L7mxfLMWjECtAU= bazaar_username=niclas@hedhman.org bazaar_password=RottenEgg!
+s2.bali.io subutai_zfs_device=/dev/sdb management_password=L7mxfLMWjECtAU= bazaar_username=niclas@hedhman.org bazaar_password=RottenEgg!
+s3.bali.io subutai_zfs_device=/dev/sdb management_password=L7mxfLMWjECtAU= bazaar_username=niclas@hedhman.org bazaar_password=RottenEgg!
+s4.bali.io subutai_zfs_device=/dev/sdb management_password=L7mxfLMWjECtAU= bazaar_username=niclas@hedhman.org bazaar_password=RottenEgg!
+s5.bali.io subutai_zfs_device=/dev/sdb management_password=L7mxfLMWjECtAU= bazaar_username=niclas@hedhman.org bazaar_password=RottenEgg!
 
-n7.eosgermany.online subutai_zfs_device=/dev/mapper/vg0-subutai management_password=L7mxfLMWjECtAU= bazaar_username=niclas@hedhman.org bazaar_password=RottenEgg!
 

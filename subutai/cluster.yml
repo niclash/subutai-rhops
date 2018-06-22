@@ -1,19 +1,25 @@
 ---
-- hosts: peers
+- hosts: all
   remote_user: root
-
+  gather_facts: false
   tasks: 
+    - name: Update
+      raw: apt-get -y --allow-unauthenticated update || true
 
-    - name: Install repository KEY
-      apt_key:
-        id: C6B2AC7FBEB649F1
-        keyserver: pgp.mit.edu
+    - name: Ensure python is available
+      raw: test -e /usr/bin/python || apt install -y --allow-unauthenticated python-minimal
 
-    - name: Update and upgrade
-      apt: 
-        update_cache: yes
-        upgrade: yes
+    - name: Ensure python-apt is available
+      raw: test -d /usr/share/python-apt || apt install -y --allow-unauthenticated python-apt
 
+    - name: Upgrade
+      raw: apt-get -y --allow-unauthenticated upgrade
+
+#    - name: Install repository KEY
+#      apt_key:
+#        id: C6B2AC7FBEB649F1
+#        keyserver: pgp.mit.edu
+#
     - name: Autoclean
       apt: 
         update_cache: yes

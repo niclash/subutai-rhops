@@ -1,6 +1,7 @@
 ---
 - hosts: [peers]
   remote_user: root
+  gather_facts: true 
 
   tasks:
     - name: Add Subutai key
@@ -31,7 +32,7 @@
         state: present
 
     - name: Create subutai zpool
-      command: zpool create -O compression=lz4 subutai {{ subutai_zfs_device }}
+      command: zpool create -f -O compression=lz4 subutai {{ subutai_zfs_device }}
       args:
         creates: /subutai
 
