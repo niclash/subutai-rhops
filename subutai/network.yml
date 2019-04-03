@@ -1,0 +1,56 @@
+---
+- hosts: [peers]
+  remote_user: root
+  gather_facts: true 
+
+  tasks:
+    - name: Disable external DNS 
+      blockinfile:
+        path: /etc/rc.local
+        block: |
+            #!/bin/bash
+            /sbin/iptables -A INPUT -i enp2s0 -p tcp --dport 53 -j DROP
+            /sbin/iptables -A INPUT -i enp2s0 -p udp --dport 53 -j DROP
+            /sbin/ip6tables -A INPUT -i enp2s0 -p tcp --dport 53 -j DROP
+            /sbin/ip6tables -A INPUT -i enp2s0 -p udp --dport 53 -j DROP
+    
+    - name: Disable DNS on external interface
+      iptables: 
+        chain: INPUT
+        in_interface: enp2s0
+        protocol: tcp
+        destination_port: 53
+        ip_version: ipv4
+        jump: DROP
+      become: yes 
+
+    - name: Disable DNS on external interface
+      iptables: 
+        chain: INPUT
+        in_interface: enp2s0
+        protocol: udp
+        destination_port: 53
+        ip_version: ipv4
+        jump: DROP
+      become: yes  
+
+    - name: Disable DNS on external interface
+      iptables: 
+        chain: INPUT
+        in_interface: enp2s0
+        protocol: tcp
+        destination_port: 53
+        ip_version: ipv6
+        jump: DROP
+      become: yes 
+
+    - name: Disable DNS on external interface
+      iptables: 
+        chain: INPUT
+        in_interface: enp2s0
+        protocol: udp
+        destination_port: 53
+        ip_version: ipv6
+        jump: DROP
+      become: yes  
+
