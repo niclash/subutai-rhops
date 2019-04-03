@@ -9,6 +9,13 @@
         keyserver: keyserver.ubuntu.com
         id: C6B2AC7FBEB649F1
 
+    - name: Ensure latest Subutai installed
+      cron:
+        name: "update subutai"
+        minute: "0"
+        hour: "5"
+        job: "export PATH=/sbin:/usr/sbin:$PATH ; (/usr/bin/subutai update rh ; subutai update management) >/var/log/subutai-update.log"
+
     - name: Add Subutai Repository
       apt_repository:
         repo: deb http://deb.subutai.io/subutai prod main
@@ -32,7 +39,7 @@
         state: present
 
     - name: Create subutai zpool
-      command: zpool create -f -O compression=lz4 subutai {{ subutai_zfs_device }}
+      command: zpool create -f -o ashift=12 -O atime=off -O compression=lz4 -O normalization=formD subutai {{subutai_zfs_device}}
       args:
         creates: /subutai
 
@@ -60,7 +67,8 @@
 
     - name: Install Subutai management
       command: subutai import management
-      creates: /var/lib/lxc/management
+      args:
+        creates: /var/lib/lxc/management
       register: management
 
     - name: Set Management Password

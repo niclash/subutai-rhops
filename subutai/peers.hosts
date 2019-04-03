@@ -1,8 +1,13 @@
 [peers]
-s1.bali.io subutai_zfs_device=/dev/sdb management_password=L7mxfLMWjECtAU= bazaar_username=niclas@hedhman.org bazaar_password=RottenEgg!
-s2.bali.io subutai_zfs_device=/dev/sdb management_password=L7mxfLMWjECtAU= bazaar_username=niclas@hedhman.org bazaar_password=RottenEgg!
-s3.bali.io subutai_zfs_device=/dev/sdb management_password=L7mxfLMWjECtAU= bazaar_username=niclas@hedhman.org bazaar_password=RottenEgg!
-s4.bali.io subutai_zfs_device=/dev/sdb management_password=L7mxfLMWjECtAU= bazaar_username=niclas@hedhman.org bazaar_password=RottenEgg!
-s5.bali.io subutai_zfs_device=/dev/sdb management_password=L7mxfLMWjECtAU= bazaar_username=niclas@hedhman.org bazaar_password=RottenEgg!
+n1.sensetif.net iface=enp4s0 subutai_zfs_device=/dev/sdb management_password=L7mxfLMWjECtAU= bazaar_username=niclas@hedhman.org bazaar_password=RottenEgg!
+n2.sensetif.net iface=enp2s0 subutai_zfs_device=/dev/sdb management_password=L7mxfLMWjECtAU= bazaar_username=niclas@hedhman.org bazaar_password=RottenEgg!
+n3.sensetif.net iface=enp2s0 subutai_zfs_device=/dev/sdb management_password=L7mxfLMWjECtAU= bazaar_username=niclas@hedhman.org bazaar_password=RottenEgg!
+n4.sensetif.net iface=enp2s0 subutai_zfs_device=/dev/sdb management_password=L7mxfLMWjECtAU= bazaar_username=niclas@hedhman.org bazaar_password=RottenEgg!
+n5.sensetif.net iface=enp2s0 subutai_zfs_device=/dev/sdb management_password=L7mxfLMWjECtAU= bazaar_username=niclas@hedhman.org bazaar_password=RottenEgg!
+n6.sensetif.net iface=enp4s0 subutai_zfs_device=/dev/sdb management_password=L7mxfLMWjECtAU= bazaar_username=niclas@hedhman.org bazaar_password=RottenEgg!
+n7.sensetif.net iface=enp2s0 subutai_zfs_device=/dev/sdb management_password=L7mxfLMWjECtAU= bazaar_username=niclas@hedhman.org bazaar_password=RottenEgg!
+n8.sensetif.net iface=enp2s0 subutai_zfs_device=/dev/sdb management_password=L7mxfLMWjECtAU= bazaar_username=niclas@hedhman.org bazaar_password=RottenEgg!
+n9.sensetif.net iface=enp2s0 subutai_zfs_device=/dev/sdb management_password=L7mxfLMWjECtAU= bazaar_username=niclas@hedhman.org bazaar_password=RottenEgg!
+n10.sensetif.net iface=enp2s0 subutai_zfs_device=/dev/sdb management_password=L7mxfLMWjECtAU= bazaar_username=niclas@hedhman.org bazaar_password=RottenEgg!
 
 
